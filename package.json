@@ -6,7 +6,10 @@
   "scripts": {
     "start": "node index.js"
   },
-  "author": "",
+  "bin": {
+    "iterm-profile-builder": "bin/iterm-profile-builder"
+  },
+  "author": "theverything",
   "license": "MIT",
   "dependencies": {
     "minimist": "^1.2.0",

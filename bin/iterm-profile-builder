@@ -1,0 +1,22 @@
+#!/usr/bin/env node
+
+const rc = require('rc');
+const argv = require('minimist')(process.argv.slice(2));
+const profileBuilder = require('../');
+
+const project = argv.project || argv.p;
+
+if (!project) {
+  console.error('ERROR: Missing [-p, --project] arguments');
+  process.exit(1);
+}
+
+const config = rc(project);
+
+if (!config.config) {
+  console.error('ERROR: Project `%s` is missing a config file!', project);
+  process.exit(1);
+}
+
+console.log('Generating iTerm2 profiles for project %s...', project);
+profileBuilder(project, config);
